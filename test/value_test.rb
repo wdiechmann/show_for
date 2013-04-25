@@ -35,19 +35,19 @@ class ValueTest < ActionView::TestCase
     with_value_for @user, :created_at
     assert_no_select "div.show_for p.wrapper strong.label"
     assert_no_select "div.show_for p.wrapper br"
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.created_at))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.created_at))}/
   end
 
   test "show_for accepts an attribute as date, without label and separator" do
     with_value_for @user, :updated_at
     assert_no_select "div.show_for p.wrapper strong.label"
     assert_no_select "div.show_for p.wrapper br"
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.updated_at))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.updated_at))}/
   end
 
   test "show_for accepts an attribute as time with format options, without label and separator" do
     with_value_for @user, :created_at, :format => :long
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.created_at, :format => :long))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.created_at, :format => :long))}/
   end
 
   test "show_for accepts an attribute as nil, without label and separator" do

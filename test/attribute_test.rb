@@ -65,17 +65,17 @@ class AttributeTest < ActionView::TestCase
 
   test "show_for accepts an attribute as time" do
     with_attribute_for @user, :created_at
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.created_at))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.created_at))}/
   end
 
   test "show_for accepts an attribute as date" do
     with_attribute_for @user, :updated_at
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.updated_at))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.updated_at))}/
   end
 
   test "show_for accepts an attribute as time with format options" do
     with_attribute_for @user, :created_at, :format => :long
-    assert_select "div.show_for p.wrapper", /#{Regexp.escape(I18n.l(@user.created_at, :format => :long))}/
+    assert_select "div.show_for p.wrapper", /#{Regexp.escape(ShowFor.l(@user.created_at, :format => :long))}/
   end
 
   test "show_for accepts an attribute as true" do
