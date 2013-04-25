@@ -14,7 +14,7 @@ module ShowFor
       options[:label_html] = options.dup if apply_options
 
       label = ShowFor.label_proc.call(label) if options.fetch(:wrap_label, true) && ShowFor.label_proc
-      wrap_with :label, ShowFor.t(label prefix: @object.table_name), options
+      wrap_with :label, label, options
     end
 
   protected
