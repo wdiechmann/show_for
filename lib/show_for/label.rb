@@ -6,14 +6,15 @@ module ShowFor
       elsif options.key?(:label)
         options.delete(:label)
       else
-        human_attribute_name(text_or_attribute)
+        # human_attribute_name(text_or_attribute)
+        ShowFor.t(text_or_attribute, prefix: @object.class.table_name)
       end
 
       return ''.html_safe if label == false
       options[:label_html] = options.dup if apply_options
 
       label = ShowFor.label_proc.call(label) if options.fetch(:wrap_label, true) && ShowFor.label_proc
-      wrap_with :label, label, options
+      wrap_with :label, ShowFor.t(label prefix: @object.table_name), options
     end
 
   protected
